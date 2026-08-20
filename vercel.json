@@ -1,4 +1,20 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null
+  "framework": null,
+  "outputDirectory": "dist/client",
+  "functions": {
+    "api/render.mjs": {
+      "includeFiles": "dist/server/**",
+      "maxDuration": 60
+    }
+  },
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/api/render"
+    }
+  ]
 }
